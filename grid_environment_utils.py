@@ -115,8 +115,8 @@ def prepare_data(default=False, horizontal_and_vertical=False, short_paths=False
             testing_strs.append(pths[120:])
         if short_paths == True:
             sorted_pths = sorted(pths, key=len)
-            training_strs.append(pths[0:120])
-            testing_strs.append(pths[120:])
+            training_strs.append(sorted_pths[0:120])
+            testing_strs.append(sorted_pths[120:])
         if horizontal_and_vertical == True:
             special_paths = construct_special_paths(grid)
             training_strs.append(special_paths)

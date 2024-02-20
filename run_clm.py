@@ -34,6 +34,7 @@ import datasets
 import evaluate
 import torch
 from datasets import load_dataset
+import pandas as pd
 
 import transformers
 from transformers import (
@@ -609,6 +610,8 @@ def main():
             checkpoint = last_checkpoint
         train_result = trainer.train(resume_from_checkpoint=checkpoint)
         trainer.save_model()  # Saves the tokenizer too for easy upload
+        df = pd.DataFrame(trainer.state.log_history)
+        df.to_csv('history.csv')
 
         metrics = train_result.metrics
 
